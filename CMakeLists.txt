@@ -22,7 +22,7 @@
 cmake_minimum_required(VERSION 2.6)
 
 # lets name the project
-project(ecs_test)
+project(ECS_TEST)
 
 # add the -c and -Wall flags
 if(MSVC)
@@ -39,7 +39,8 @@ else()
 endif()
 
 if ( CMAKE_BUILD_TYPE STREQUAL "" )
-	# CMake defaults to leaving CMAKE_BUILD_TYPE empty. This screws up
+	# CMake defaults to leaving CMAKE_BUILD_TYPE v
+	empty. This screws up
 	# differentiation between debug and release builds.
 	set(
 		CMAKE_BUILD_TYPE
@@ -56,21 +57,21 @@ endif ( CMAKE_BUILD_TYPE STREQUAL "Release" )
 
 # Lets LOAD app our headers!
 file(GLOB_RECURSE HDRS
-	${ecs_test_SOURCE_DIR}/src/*.h
-	${ecs_test_SOURCE_DIR}/src/*.hpp
+	${ECS_TEST_SOURCE_DIR}/src/*.h
+	${ECS_TEST_SOURCE_DIR}/src/*.hpp
 )
 
 # Lets LOAD app our sources!
 file(GLOB_RECURSE SRCS
-	${ecs_test_SOURCE_DIR}/src/*.cpp
-	${ecs_test_SOURCE_DIR}/src/*.c
+	${ECS_TEST_SOURCE_DIR}/src/*.cpp
+	${ECS_TEST_SOURCE_DIR}/src/*.c
 )
 
 # Define the executable
-add_executable(ecs_test ${HDRS} ${SRCS})
+add_executable(ECS_TEST ${HDRS} ${SRCS})
 
 # We need a CMAKE_DIR with some code to find external dependencies
-SET(ecs_test_CMAKE_DIR "${ecs_test_SOURCE_DIR}/cmake")
+SET(ECS_TEST_CMAKE_DIR "${ECS_TEST_SOURCE_DIR}/cmake")
 
 #######################################
 # LOOK for the packages that we need! #
@@ -80,19 +81,19 @@ SET(ecs_test_CMAKE_DIR "${ecs_test_SOURCE_DIR}/cmake")
 find_package(OpenGL REQUIRED)
 
 # GLEW
-INCLUDE(${ecs_test_CMAKE_DIR}/FindGLEW.cmake)
+INCLUDE(${ECS_TEST_CMAKE_DIR}/FindGLEW.cmake)
 
 # SDL2
-INCLUDE(${ecs_test_CMAKE_DIR}/FindSDL2.cmake)
+INCLUDE(${ECS_TEST_CMAKE_DIR}/FindSDL2.cmake)
 
 # ASSIMP
-INCLUDE(${ecs_test_CMAKE_DIR}/FindASSIMP.cmake)
+INCLUDE(${ECS_TEST_CMAKE_DIR}/FindASSIMP.cmake)
 
 # Define the include DIRs
 include_directories(
-	${ecs_test_SOURCE_DIR}/headers
-	${ecs_test_SOURCE_DIR}/sources
-	${ecs_test_SOURCE_DIR}/src
+	${ECS_TEST_SOURCE_DIR}/headers
+	${ECS_TEST_SOURCE_DIR}/sources
+	${ECS_TEST_SOURCE_DIR}/src
 	${OPENGL_INCLUDE_DIRS}
 	${GLEW_INCLUDE_DIRS}
 	${SDL2_INCLUDE_DIRS}
@@ -100,7 +101,7 @@ include_directories(
 )
 
 # Define the link libraries
-target_link_libraries( ecs_test
+target_link_libraries( ECS_TEST
 	${OPENGL_LIBRARIES}
 	${GLEW_LIBRARIES}
 	${SDL2_LIBRARIES}
@@ -108,11 +109,11 @@ target_link_libraries( ecs_test
 )
 
 if(WIN32)
-	string(REPLACE "/" "\\" source_path_windows "${ecs_test_SOURCE_DIR}/res")
-	string(REPLACE "/" "\\" build_path_windows "${ecs_test_BINARY_DIR}/res")
+	string(REPLACE "/" "\\" source_path_windows "${ECS_TEST_SOURCE_DIR}/res")
+	string(REPLACE "/" "\\" build_path_windows "${ECS_TEST_BINARY_DIR}/res")
 	execute_process(COMMAND cmd.exe /c mklink /J "${build_path_windows}" "${source_path_windows}" RESULT_VARIABLE exitcode)
 else()
-	execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ecs_test_SOURCE_DIR}/res ${ecs_test_BINARY_DIR}/res RESULT_VARIABLE exitcode)
+	execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${ECS_TEST_SOURCE_DIR}/res ${ECS_TEST_BINARY_DIR}/res RESULT_VARIABLE exitcode)
 endif()
 
 if(NOT ${exitcode} EQUAL 0)
@@ -121,16 +122,16 @@ if(NOT ${exitcode} EQUAL 0)
 endif()
 
 #Copy file if the build resource folder contains an older version. This is ignored when the symlink was succesful because the files are already the newest version.
-file(GLOB_RECURSE RES RELATIVE ${ecs_test_SOURCE_DIR}/res/ ${ecs_test_SOURCE_DIR}/res/*.*)
+file(GLOB_RECURSE RES RELATIVE ${ECS_TEST_SOURCE_DIR}/res/ ${ECS_TEST_SOURCE_DIR}/res/*.*)
 foreach(file IN LISTS RES)
-	configure_file(${ecs_test_SOURCE_DIR}/res/${file} ${ecs_test_BINARY_DIR}/res/${file} COPYONLY)
+	configure_file(${ECS_TEST_SOURCE_DIR}/res/${file} ${ECS_TEST_BINARY_DIR}/res/${file} COPYONLY)
 endforeach()
 
 #Create virtual folders to make it look nicer in VS
 if(MSVC_IDE)
 	foreach(source IN LISTS SRCS HDRS)
 		get_filename_component(source_path "${source}" PATH)
-		string(REPLACE "${ecs_test_SOURCE_DIR}" "" relative_source_path "${source_path}")
+		string(REPLACE "${ECS_TEST_SOURCE_DIR}" "" relative_source_path "${source_path}")
 		string(REPLACE "/" "\\" source_path_msvc "${relative_source_path}")
 		source_group("${source_path_msvc}" FILES "${source}")
 	endforeach()
