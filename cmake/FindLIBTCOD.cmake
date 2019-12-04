@@ -25,9 +25,9 @@
 SET(_PF86 "PROGRAMFILES(X86)")
 SET( LIBTCOD_SEARCH_PATHS
 	${LIBTCOD_ROOT_DIR}					# LIBTCOD!
-	./lib/LIBTCOD
-	$ENV{PROGRAMFILES}/LIBTCOD			# WINDOWS
-	"$ENV{_PF86}/LIBTCOD"	# WINDOWS
+	./lib/libtcod
+	$ENV{PROGRAMFILES}/libtcod			# WINDOWS
+	"$ENV{_PF86}/libtcod"	# WINDOWS
 	~/Library/Frameworks				# MAC
 	/Library/Frameworks					# MAC
 	/usr/local							# LINUX/MAC/UNIX
@@ -40,18 +40,18 @@ SET( LIBTCOD_SEARCH_PATHS
 
 FIND_PATH( LIBTCOD_INCLUDE_DIRS
 	NAMES
-		LIBTCOD/libtcod.h
+		libtcod.h
 	PATHS
 		${LIBTCOD_SEARCH_PATHS}
 	PATH_SUFFIXES
 		include
 	DOC
-		"The directory where LIBTCOD/libtcod.h resides"
+		"The directory where libtcod.h resides"
 )
 
 FIND_LIBRARY( LIBTCOD_LIBRARIES
 	NAMES
-		LIBTCOD LIBTCOD
+		libtcod LIBTCOD
 	PATHS
 		${LIBTCOD_SEARCH_PATHS}
 	PATH_SUFFIXES
@@ -60,7 +60,7 @@ FIND_LIBRARY( LIBTCOD_LIBRARIES
 		lib/x86
 		lib/x64
 	DOC
-		"The LIBTCOD library"
+		"The libtcod library"
 )
 
 # Check if we found it!

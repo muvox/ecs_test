@@ -40,7 +40,7 @@ endif()
 
 if ( CMAKE_BUILD_TYPE STREQUAL "" )
 	# CMake defaults to leaving CMAKE_BUILD_TYPE v
-	empty. This screws up
+	#empty. This screws up
 	# differentiation between debug and release builds.
 	set(
 		CMAKE_BUILD_TYPE
@@ -89,6 +89,9 @@ INCLUDE(${ECS_TEST_CMAKE_DIR}/FindSDL2.cmake)
 # ASSIMP
 INCLUDE(${ECS_TEST_CMAKE_DIR}/FindASSIMP.cmake)
 
+# LIBTCOD
+INCLUDE(${ECS_TEST_CMAKE_DIR}/FindLIBTCOD.cmake)
+
 # Define the include DIRs
 include_directories(
 	${ECS_TEST_SOURCE_DIR}/headers
@@ -98,6 +101,7 @@ include_directories(
 	${GLEW_INCLUDE_DIRS}
 	${SDL2_INCLUDE_DIRS}
 	${ASSIMP_INCLUDE_DIRS}
+	${LIBTCOD_INCLUDE_DIRS}
 )
 
 # Define the link libraries
@@ -106,6 +110,7 @@ target_link_libraries( ECS_TEST
 	${GLEW_LIBRARIES}
 	${SDL2_LIBRARIES}
 	${ASSIMP_LIBRARIES}
+	${LIBTCOD_LIBRARIES}
 )
 
 if(WIN32)
