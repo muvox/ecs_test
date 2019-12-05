@@ -31,6 +31,7 @@ SET( LIBTCOD_SEARCH_PATHS
 	~/Library/Frameworks				# MAC
 	/Library/Frameworks					# MAC
 	/usr/local							# LINUX/MAC/UNIX
+	/usr/local/lib							# LINUX/MAC/UNIX
 	/usr								# LINUX/MAC/UNIX
 	/opt								# LINUX/MAC/UNIX
 	/sw									# Fink
@@ -40,7 +41,7 @@ SET( LIBTCOD_SEARCH_PATHS
 
 FIND_PATH( LIBTCOD_INCLUDE_DIRS
 	NAMES
-		libtcod.h
+		libtcod.h libtcod/libtcod.h
 	PATHS
 		${LIBTCOD_SEARCH_PATHS}
 	PATH_SUFFIXES
