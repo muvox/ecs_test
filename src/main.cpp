@@ -1,5 +1,5 @@
 #include <iostream>
-#include "lib/include/libtcod/libtcod.h"
+#include "libtcod/libtcod.h"
 
 int main() {
    int playerx=40,playery=25;

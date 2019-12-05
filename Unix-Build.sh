@@ -29,3 +29,5 @@ mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE="$BUILD_TARGET" "${@:1}" ../
 make -j 4
+cd ..
+cp terminal.png build/terminal.png

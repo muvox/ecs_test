@@ -73,9 +73,14 @@ add_executable(ECS_TEST ${HDRS} ${SRCS})
 # We need a CMAKE_DIR with some code to find external dependencies
 SET(ECS_TEST_CMAKE_DIR "${ECS_TEST_SOURCE_DIR}/cmake")
 
+SET(CMAKE_CXX_FLAGS "-lz")
+
 #######################################
 # LOOK for the packages that we need! #
 #######################################
+
+#Threads required by libtcod?
+find_package(Threads)
 
 # OpenGL
 find_package(OpenGL REQUIRED)
@@ -106,6 +111,8 @@ include_directories(
 
 # Define the link libraries
 target_link_libraries( ECS_TEST
+	${CMAKE_THREAD_LIBS_INIT}
+	${CMAKE_DL_LIBS}
 	${OPENGL_LIBRARIES}
 	${GLEW_LIBRARIES}
 	${SDL2_LIBRARIES}
