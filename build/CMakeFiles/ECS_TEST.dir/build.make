@@ -479,8 +479,8 @@ ECS_TEST.exe: CMakeFiles/ECS_TEST.dir/src/rendering/indexedModel.cpp.obj
 ECS_TEST.exe: CMakeFiles/ECS_TEST.dir/src/rendering/modelLoader.cpp.obj
 ECS_TEST.exe: CMakeFiles/ECS_TEST.dir/src/rendering/staticLibs/stb_image.c.obj
 ECS_TEST.exe: CMakeFiles/ECS_TEST.dir/build.make
-ECS_TEST.exe: C:/mingw64/x86_64-w64-mingw32/lib/libglew32.dll.a
-ECS_TEST.exe: ../lib/SDL2/lib/x86/SDL2.dll
+ECS_TEST.exe: ../lib/glew/lib/Release/Win32/glew32.lib
+ECS_TEST.exe: ../lib/SDL2/lib/x86/SDL2.lib
 ECS_TEST.exe: ../lib/Assimp/lib/x86/assimp.lib
 ECS_TEST.exe: ../lib/libtcod/lib/x86/libtcod.lib
 ECS_TEST.exe: CMakeFiles/ECS_TEST.dir/linklibs.rsp
