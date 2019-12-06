@@ -1,0 +1,1 @@
+ -lopengl32 -lglu32 lib/glew/lib/Release/Win32/glew32.lib lib/SDL2/lib/x86/SDL2.dll lib/Assimp/lib/x86/assimp.lib lib/libtcod/lib/x86/libtcod.lib -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

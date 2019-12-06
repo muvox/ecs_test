@@ -1,0 +1,1 @@
+-IC:/dev/projects/ecs_test/headers -IC:/dev/projects/ecs_test/sources -IC:/dev/projects/ecs_test/src -IC:/dev/projects/ecs_test/lib/glew/include -IC:/dev/projects/ecs_test/lib/SDL2/include -IC:/dev/projects/ecs_test/lib/Assimp/include -IC:/dev/projects/ecs_test/lib/libtcod/include 
